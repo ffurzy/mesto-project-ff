@@ -4,17 +4,18 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); 
 
 module.exports = {
-  entry: './src/index.js', 
-
+  entry: {
+    main: "./src/components/index.js",
+  },
   output: {
-    path: path.resolve(__dirname, 'dist'), 
-    filename: 'main.js',
-    publicPath: '',
+    path: path.resolve(__dirname, "dist"),
+    filename: "main.js",
+    publicPath: "",
   },
 
-  mode: 'development', 
+  mode: "development",
   devServer: {
-    static: { directory: path.resolve(__dirname, 'dist') },
+    static: path.resolve(__dirname, "./dist"),
     open: true,
     compress: true,
     port: 8080,
@@ -23,12 +24,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.m?js$/, // находим все JS-файлы
-        exclude: /node_modules/, // пропускаем папку с зависимостями
-        use: {
-          loader: 'babel-loader', 
-          options: { presets: ['@babel/preset-env'] }
-        }
+        test: /\.js$/,
+        use: "babel-loader",
+        exclude: "/node_modules/",
       },
       {
         test: /\.css$/i, // находим все CSS-файлы
@@ -50,7 +48,7 @@ module.exports = {
       },
       {
         test: /\.(woff2?|eot|ttf|otf)$/i, // шрифты
-        type: 'asset/resource', // тоже копируем в assets
+        type: 'asset/resource', 
         generator: {
             filename: "fonts/[name].[hash][ext]",
           },
@@ -59,9 +57,11 @@ module.exports = {
   },
 
   plugins: [
-    new CleanWebpackPlugin(), // чистим dist перед сборкой
-    new HtmlWebpackPlugin({ template: './src/index.html', }), // генерим index.html без минификации в деве
-    new MiniCssExtractPlugin(), // имя для CSS-файла
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+    }),
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin(),
   ],
   devtool: 'source-map',
 };

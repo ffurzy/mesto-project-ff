@@ -4,14 +4,9 @@
   "description": "https://github.com/ffurzy/mesto-project-ff",
   "main": "index.js",
   "scripts": {
-  "dev": "webpack serve --mode development --open",
-  "build": "webpack --mode production"
-} 
-//npm run dev — поднимает локальный сервер
-//npm run build — собирает продакшен в папку dist
-
-
-,
+    "dev": "webpack serve --mode development --open",
+    "build": "webpack --mode production"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
