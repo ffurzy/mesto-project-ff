@@ -1,20 +1,20 @@
 //открываем модальное окно
 export function openModal(popup) {
-    popup.classList.add('popup_is-opened');
-    document.addEventListener('keydown', closeModalEsc);
-};
+  popup.classList.add("popup_is-opened");
+  document.addEventListener("keydown", closeModalEsc);
+}
 
-//закрываем модальное окно 
+//закрываем модальное окно
 export function closeModal(popup) {
-    popup.classList.remove('popup_is-opened');
-    document.removeEventListener('keydown', closeModalEsc);
-};
+  popup.classList.remove("popup_is-opened");
+  document.removeEventListener("keydown", closeModalEsc);
+}
 
 //Закрываем модельно окно по оверлею
 export function closeModalOverlay(evt) {
-    const popups = document.querySelectorAll('.popup');
-  popups.forEach(function(popup) {
-    popup.addEventListener('mousedown', function(evt) {
+  const popups = document.querySelectorAll(".popup");
+  popups.forEach(function (popup) {
+    popup.addEventListener("mousedown", function (evt) {
       if (evt.target === popup) {
         closeModal(popup);
       }
@@ -24,12 +24,10 @@ export function closeModalOverlay(evt) {
 
 //Закрываем модельное окно по Esc
 export function closeModalEsc(evt) {
-    if (evt.key === 'Escape') {
-        const openedPopup = document.querySelector('.popup_is-opened');
-    
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_is-opened");
     if (openedPopup) {
-        closeModal(openedPopup);
+      closeModal(openedPopup);
     }
-    }
-};
-
+  }
+}
