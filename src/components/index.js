@@ -24,6 +24,12 @@ const formAdd = document.querySelector('form[name="new-place"]');
 const placeInput  = formAdd.querySelector('.popup__input_type_card-name');
 const linkInput   = formAdd.querySelector('.popup__input_type_url');
 
+//открытие больших картинок
+const popupImage = document.querySelector('.popup__image');
+const popupImageOpen = document.querySelector('.popup_type_image');
+const popupImageCaption = document.querySelector('.popup__caption');
+
+
 
 
 
@@ -52,11 +58,21 @@ document.querySelectorAll('.popup__close').forEach(function(btn) {
 });
 
 
+
+
+//Отрытие большой карточки
+
+function openPopupImage(card) {
+  popupImage.src = card.link;
+  popupImage.alt = card.name;
+  popupImageCaption.textContent = card.name;
+  openModal(popupImageOpen);
+}
+
 initialCards.forEach(function(item) {
-  const newCard = createCard(item, deleteCard);
+  const newCard = createCard(item, deleteCard, openPopupImage);
   cards.append(newCard);
 });
-
 
 
 //редактирование профиля
@@ -79,10 +95,11 @@ function handleAddFormSubmit(evt) {
 
   //добавление карточки в начало списка
 
-  const cardElement = createCard(cardData, deleteCard);
+  const cardElement = createCard(cardData, deleteCard, openPopupImage);
   cards.prepend(cardElement);
 
-  formAdd.requestFullscreen();
+  
+  formAdd.reset();
   closeModal(popupAddCard);
 }
 formAdd.addEventListener('submit', handleAddFormSubmit);
