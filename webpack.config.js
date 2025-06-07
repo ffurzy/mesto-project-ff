@@ -25,18 +25,18 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        use: "babel-loader",
-        exclude: "/node_modules/",
+        use: 'babel-loader',
+        exclude: '/node_modules/'
       },
       {
-        test: /\.css$/i, // находим все CSS-файлы
-        use: [
-          MiniCssExtractPlugin.loader, // вынимает CSS из JS
-          'css-loader', // обрабатывает @import и url() в CSS
-          {
-            loader: 'postcss-loader', // добавляет префиксы для разных браузеров
-            options: { postcssOptions: { plugins: [ require('autoprefixer') ] } } // автопрефиксер
-          }
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          },
+          'postcss-loader'
         ]
       },
       {

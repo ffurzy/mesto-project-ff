@@ -24,11 +24,12 @@ export function closeModalOverlay(evt) {
 
 //Закрываем модельное окно по Esc
 export function closeModalEsc(evt) {
-    if (env.key === 'Escape') {
-        const openedPopup = document.querySelector('.popup_is-opened')
-    }
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_is-opened');
+    
     if (openedPopup) {
         closeModal(openedPopup);
+    }
     }
 };
 
