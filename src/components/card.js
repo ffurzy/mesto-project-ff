@@ -1,5 +1,5 @@
 //создание карточки
-export function createCard(card, deleteCard, openImageClick) {
+export function createCard(card, deleteCard, openImageClick, addLike) {
   const templateItems = document.querySelector("#card-template").content;
   const templateCard = templateItems.querySelector(".card").cloneNode(true);
 
@@ -14,7 +14,7 @@ export function createCard(card, deleteCard, openImageClick) {
   //реализация лайка
   const likeBtn = templateCard.querySelector(".card__like-button");
   likeBtn.addEventListener("click", function () {
-    likeBtn.classList.toggle("card__like-button_is-active");
+    addLike(likeBtn);
   });
 
   //открытие большого изоображения
