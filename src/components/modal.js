@@ -11,7 +11,7 @@ export function closeModal(popup) {
 }
 
 //Закрываем модельно окно по оверлею
-export function closeModalOverlay(popups) {
+export function addCloseModalByOverlayListener(popups) {
   popups.forEach(function (popup) {
     popup.addEventListener("mousedown", function (evt) {
       if (evt.target === popup) {

@@ -1,14 +1,19 @@
 //Импорты
 import "../pages/index.css";
 import { initialCards } from "./cards.js";
-import { createCard, deleteCard as handleCardDelete } from "./card.js";
+import { createCard, deleteCard as handleCardDelete, handleCardLike} from "./card.js";
 import {
   openModal,
   closeModal,
-  closeModalOverlay,
+  addCloseModalByOverlayListener,
   closeModalEsc,
 } from "./modal.js";
 import "core-js/stable";
+import { enableValidation, validationConfig } from "./validation.js";
+
+enableValidation(validationConfig);
+
+
 
 //Селекторы
 const cardsContainer = document.querySelector(".places__list");
@@ -28,12 +33,8 @@ const popupImage = document.querySelector(".popup__image");
 const popupImageOpen = document.querySelector(".popup_type_image");
 const popupImageCaption = document.querySelector(".popup__caption");
 const allPopups = document.querySelectorAll(".popup");
-closeModalOverlay(allPopups);
+addCloseModalByOverlayListener(allPopups);
 
-//коллбек для лайка
-function handleCardLike(likeBtn) {
-  likeBtn.classList.toggle("card__like-button_is-active");
-}
 
 //Отрытие большой карточки
 function handleCardImageClick(card) {

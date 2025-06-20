@@ -1,3 +1,9 @@
+
+  //коллбек для лайка
+ export function handleCardLike(likeBtn) {
+  likeBtn.classList.toggle("card__like-button_is-active");
+}
+
 //создание карточки
 export function createCard(card, deleteCard, openImageClick, addLike) {
   const templateItems = document.querySelector("#card-template").content;
