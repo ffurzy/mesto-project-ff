@@ -7,6 +7,24 @@
   background-size: cover;
   background-position: center;
   margin: 0 29px 0 0;
+  position: relative;
+}
+
+.profile__image:before {
+  position: absolute;
+  content: "";
+  background-image: url("/src/images/avatar-edit-logo.svg");
+  background-position: center;
+  opacity: 0;
+  z-index: 2;
+  top: 47px;
+	left: 47px;
+  width: 26px;
+	height: 26px;
+}
+
+.profile__image:hover::before {
+	opacity: 1;
 }
 
 @media screen and (max-width: 740px) {
