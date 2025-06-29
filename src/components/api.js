@@ -35,7 +35,6 @@ export const getUserInfo = () => {
 
 //Редактирование профиля
 export const updateProfile = (name, about) => {
-  console.log("Данные перед отправкой:", { name, about });
   return fetch(`${config.baseUrl}/users/me`, {
     method: "PATCH",
     headers: config.headers,

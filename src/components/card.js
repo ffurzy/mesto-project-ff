@@ -51,6 +51,15 @@ export function createCard( card, deleteCard, openImageClick, addLike, currentUs
   cardImage.alt = card.name;
   const likeBtn = templateCard.querySelector(".card__like-button");
   likeCount.textContent = card.likes.length;
+  //Проверяем есть ли в лайках мой лайк и навешиваем класс
+  const userLiked = card.likes.some(
+    function(like) {
+      return like._id === currentUserId;
+    });
+  if (userLiked) {
+    likeBtn.classList.add("card__like-button_is-active");
+  } 
+
   likeBtn.addEventListener("click", function () {
     addLike(likeBtn, card._id, likeCount);
   });
